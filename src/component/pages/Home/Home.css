@@ -1,0 +1,7 @@
+.carousel-inner img{
+    height: 90vh;
+}
+.carousel-caption h3{
+    /* background-color: rgba(0, 9, 0, 0.6); */
+    color: #d8f48d;
+}
