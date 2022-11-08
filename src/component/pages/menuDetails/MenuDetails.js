@@ -10,15 +10,33 @@ const MenuDetails = () => {
         event.preventDefault();
         const form = event.target;
         const email = user?.email;
+        const customerName = user?.displayName || 'annonymous';
         const feedback = form.feedback.value;
 
         const review = {
             item: _id,
             itemName:name,
             email,
+            customerName,
             comment: feedback
 
         }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data =>{
+                if(data.acknowledged){
+                    alert('review added successfuly')
+                    form.reset();
+                }
+            
+        })
 
     }
     return (
