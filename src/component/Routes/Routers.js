@@ -4,6 +4,7 @@ import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import MenuDetails from "../pages/menuDetails/MenuDetails";
 import Register from "../pages/Register/Register";
 import Services from "../pages/Services/Services";
 
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
             {
                 path:'/menu',
                 element:<Services></Services>
+            },
+            {
+                path: '/menuDetails/:id',
+                element: <MenuDetails></MenuDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
             },
             {
                 path:'/about',
