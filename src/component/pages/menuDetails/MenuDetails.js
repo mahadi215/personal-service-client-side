@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const MenuDetails = () => {
     const {_id, name, img, des, price, ratings} = useLoaderData();
     const {user} = useContext(AuthContext);
+    const [reviews, setReviews] = useState({});
+     
+    useEffect(()=>{
+        fetch(`http://localhost:5000/reviews?item=${_id}`)
+        .then(res => res.json())
+        .then(data => setReviews(data))
+
+    },[ _id])
 
     const handleReview = (event) =>{
         event.preventDefault();
@@ -35,9 +43,7 @@ const MenuDetails = () => {
                     alert('review added successfuly')
                     form.reset();
                 }
-            
         })
-
     }
     return (
         <div className='m-4'>
@@ -64,6 +70,11 @@ const MenuDetails = () => {
                 </div>
                 <button type="submit" className="btn btn-dark text-white m-auto d-block w-50">Submit</button>
             </form>
+            <br />
+            <div className='m-3'>
+            <h2>This item has {reviews.length}</h2>
+
+            </div>
         </div>
         </div>
     );
