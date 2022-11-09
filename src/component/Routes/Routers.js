@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import MenuDetails from "../pages/menuDetails/MenuDetails";
 import Register from "../pages/Register/Register";
 import Services from "../pages/Services/Services";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menuDetails/:id',
-                element: <MenuDetails></MenuDetails>,
+                element: <PrivateRoutes><MenuDetails></MenuDetails></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
             },
             {

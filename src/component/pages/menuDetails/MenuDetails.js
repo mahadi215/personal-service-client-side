@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const MenuDetails = () => {
     const {_id, name, img, des, price, ratings} = useLoaderData();
     const {user} = useContext(AuthContext);
-    const [reviews, setReviews] = useState({});
+    const [reviews, setReviews] = useState([]);
      
     useEffect(()=>{
         fetch(`http://localhost:5000/reviews?item=${_id}`)
@@ -60,8 +60,8 @@ const MenuDetails = () => {
                 </div>
                 <form onSubmit={handleReview}  className=' w-50 sm-w-100 m-auto p-3'>
                 <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="text" name='name' className='form-control' defaultValue={user?.displayName} readOnly />
+                    <label for="exampleInputEmail1" className="form-label">Email</label>
+                    <input type="text" name='name' className='form-control' defaultValue={user?.email} readOnly />
 
                 </div>
                 <div className="mb-3">
@@ -72,7 +72,16 @@ const MenuDetails = () => {
             </form>
             <br />
             <div className='m-3'>
-            <h2>This item has {reviews.length}</h2>
+            <h2>This item has {reviews.length} reviews.</h2>
+            { 
+               reviews.map(review => <div className=' m-2 border p-3' > 
+                 <p><b>{review.customarName}</b></p>
+                 <p><b>{review.email}</b></p>
+                 <p>{review.comment}</p>
+                 
+               </div>)
+              
+            }
 
             </div>
         </div>
