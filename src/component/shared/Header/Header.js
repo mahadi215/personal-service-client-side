@@ -5,7 +5,7 @@ import './Header.css'
 
 const Header = () => {
 
-    const {logOut} = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
             .then()
@@ -34,12 +34,20 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to='/contact'>Contact</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to='/login'>Login</Link>
-                            </li>
-                            <li className="nav-item">
-                            <button onClick={ handleLogOut } className='btn nav-link'>Log Out</button>
-                            </li>
+                            {
+                                user?.email?
+                                    <>
+                                    
+                                        <li className="nav-item ms-3 mt-2">
+                                         <i className="fa-solid fa-user"></i>
+                                        </li>
+                                        <li className="nav-item ms-1">
+                                            <button onClick={handleLogOut} className='btn nav-link'>Log Out</button>
+                                        </li></>
+                                    : <li className="nav-item">
+                                    <Link className="nav-link" to='/login'>Login</Link>
+                                </li>
+                           }
                         </ul>
                     </div>
                 </div>

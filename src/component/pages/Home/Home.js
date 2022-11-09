@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeCard from '../HomeCard/HomeCard';
 import './Home.css'
 
 const Home = () => {
@@ -40,6 +41,8 @@ const Home = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
+
+            <HomeCard></HomeCard>
         </div>
     );
 };

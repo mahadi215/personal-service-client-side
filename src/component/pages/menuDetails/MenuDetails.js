@@ -46,19 +46,25 @@ const MenuDetails = () => {
         })
     }
     return (
-        <div className='m-4'>
+        <div className='m-4 row'>
+            <div className='col-lg-6 col-md-6 col-sm-12'>
             <div className="card w-75 m-auto" >
             <img className="card-img-top " style={{height: "18rem"}} src={img} alt=""/>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p><b>{price}</b></p>
                     <p className="card-text">{des}</p>
-                    <p>{ratings}</p>
+                    <p>Ratings : {ratings}</p>
                     <Link to={`/menuDetails/${_id}`}>
-                    <button className='btn btn-dark'>Order</button>
+                    <button className='btn btn-dark'>Add To Cart</button>
                     </Link>
                 </div>
-                <form onSubmit={handleReview}  className=' w-50 sm-w-100 m-auto p-3'>
+                
+        </div>
+            </div>
+
+        <div className='col-lg-6 col-md-6 col-sm-12'>
+        <form onSubmit={handleReview}  className=' w-50 sm-w-100 m-auto p-3'>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Email</label>
                     <input type="text" name='name' className='form-control' defaultValue={user?.email} readOnly />
@@ -72,11 +78,11 @@ const MenuDetails = () => {
             </form>
             <br />
             <div className='m-3'>
-            <h2>This item has {reviews.length} reviews.</h2>
+            <h5>This item has {reviews.length} reviews.</h5>
             { 
-               reviews.map(review => <div className=' m-2 border p-3' > 
+               reviews.map(review => <div className=' m-2 border p-2' > 
                  <p><b>{review.customarName}</b></p>
-                 <p><b>{review.email}</b></p>
+                 {/* <p><b>{review.email}</b></p> */}
                  <p>{review.comment}</p>
                  
                </div>)

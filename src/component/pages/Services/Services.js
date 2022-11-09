@@ -13,7 +13,7 @@ const Services = () => {
 
 
     return (
-        <div className='container mt-4'>
+        <div className='container my-4'>
             <div className='row'>
                 {
                     menu.map(m => <div className='col-lg-4 col-md-6 col-sm-12 g-4 ' >
