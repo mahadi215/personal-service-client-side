@@ -38,6 +38,12 @@ const Header = () => {
                                 user?.email?
                                     <>
                                     
+                                        <li className="nav-item ">
+                                        <Link className="nav-link">Add Service</Link>
+                                        </li>
+                                        <li className="nav-item ">
+                                         <Link className="nav-link">My Reviews</Link>
+                                        </li>
                                         <li className="nav-item ms-3 mt-2">
                                          <i className="fa-solid fa-user"></i>
                                         </li>

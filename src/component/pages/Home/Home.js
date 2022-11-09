@@ -1,4 +1,6 @@
 import React from 'react';
+import About from '../About/About';
+import Contact from '../Contact/Contact';
 import HomeCard from '../HomeCard/HomeCard';
 import './Home.css'
 
@@ -42,7 +44,9 @@ const Home = () => {
                 </button>
             </div>
 
+            <About></About>
             <HomeCard></HomeCard>
+            <Contact></Contact>
         </div>
     );
 };
