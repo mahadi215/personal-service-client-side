@@ -34,15 +34,19 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to='/contact'>Contact</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/blog'>Blog</Link>
+                            </li>
+
                             {
                                 user?.email?
                                     <>
                                     
                                         <li className="nav-item ">
-                                        <Link className="nav-link">Add Service</Link>
+                                        <Link className="nav-link" to='/addservice'>Add Service</Link>
                                         </li>
                                         <li className="nav-item ">
-                                         <Link className="nav-link">My Reviews</Link>
+                                         <Link className="nav-link" to='/myreviews'>My Reviews</Link>
                                         </li>
                                         <li className="nav-item ms-3 mt-2">
                                          <i className="fa-solid fa-user"></i>
