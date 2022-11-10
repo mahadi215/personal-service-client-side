@@ -12,7 +12,7 @@ const MenuDetails = () => {
         .then(res => res.json())
         .then(data => setReviews(data))
 
-    },[_id])
+    },[])
 
     const handleReview = (event) =>{
         event.preventDefault();
