@@ -13,7 +13,21 @@ const MyReviews = () => {
         .then(res => res.json())
         .then(data => setMyReviews(data))
     },[])
-    console.log(myReviews);
+    // console.log(myReviews);
+
+    const handleDelete =(myReview) =>{
+        fetch(`http://localhost:5000/reviews/${myReview._id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                alert('deleted succesfull');
+                const restReviews = myReviews.filter(x => x._id !== myReview._id)
+                setMyReviews(restReviews);
+            }
+        })
+    }
     return (
         <div className='m-5'>
             
@@ -24,11 +38,11 @@ const MyReviews = () => {
                }
                {
                 myReviews.map(myReview => <div key={myReview._id} className='m-4 bg-light p-3'>
-                    {console.log(myReview)}
+                    {/* {console.log(myReview)} */}
                     <p><b>{myReview.itemName}</b></p>
                     <p>{myReview.comment}</p>
                     <Link to={`/update/${myReview._id}`}><button className='btn btn-dark'>Edit</button></Link>
-                    <button className='btn btn-dark ms-3'>Delete</button>
+                    <button onClick={()=>{handleDelete(myReview)}} className='btn btn-dark ms-3'>Delete</button>
 
                 </div>)
                }
