@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const MyReviews = () => {
@@ -22,10 +23,11 @@ const MyReviews = () => {
                      : <h3 className='text-center'>You have {myReviews.length} review</h3>
                }
                {
-                myReviews.map(myReview => <div className='m-4 bg-light p-3'>
+                myReviews.map(myReview => <div key={myReview._id} className='m-4 bg-light p-3'>
+                    {console.log(myReview)}
                     <p><b>{myReview.itemName}</b></p>
                     <p>{myReview.comment}</p>
-                    <button className='btn btn-dark'>Edit</button>
+                    <Link to={`/update/${myReview._id}`}><button className='btn btn-dark'>Edit</button></Link>
                     <button className='btn btn-dark ms-3'>Delete</button>
 
                 </div>)
