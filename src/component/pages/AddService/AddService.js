@@ -21,7 +21,7 @@ const AddService = () => {
             ratings
         }
 
-        fetch('http://localhost:5000/menu', {
+        fetch('https://node-mong-server.vercel.app/menu', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

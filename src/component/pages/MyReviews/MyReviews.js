@@ -9,14 +9,14 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+        fetch(`https://node-mong-server.vercel.app/myreviews?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setMyReviews(data))
     },[])
     // console.log(myReviews);
 
     const handleDelete =(myReview) =>{
-        fetch(`http://localhost:5000/reviews/${myReview._id}`,{
+        fetch(`https://node-mong-server.vercel.app/reviews/${myReview._id}`,{
             method:'DELETE'
         })
         .then(res => res.json())

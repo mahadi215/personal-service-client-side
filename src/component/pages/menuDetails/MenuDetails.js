@@ -8,11 +8,11 @@ const MenuDetails = () => {
     const [reviews, setReviews] = useState([]);
      
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?item=${_id}`)
+        fetch(`https://node-mong-server.vercel.app/reviews?item=${_id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
 
-    },[ _id])
+    },[_id])
 
     const handleReview = (event) =>{
         event.preventDefault();
@@ -32,7 +32,7 @@ const MenuDetails = () => {
 
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://node-mong-server.vercel.app/reviews', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
@@ -44,6 +44,11 @@ const MenuDetails = () => {
                 if(data.acknowledged){
                     alert('review added successfuly')
                     form.reset();
+                     
+                    // setReviews(...reviews ,data)
+                    const newReview = [data, ...reviews]
+                    setReviews(newReview)
+
                 }
         })
     }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const HomeCard = () => {
     const [card, setCard] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/menu')
+        fetch('https://node-mong-server.vercel.app/menu')
             .then(res => res.json())
             .then(data => setCard(data))
     }, [])
